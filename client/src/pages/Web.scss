@@ -122,3 +122,12 @@
         }
     }
 }
+
+.linkFont{
+    font-size: .8rem;
+    color: #886c35;
+    text-decoration: none;
+    &:hover{
+        cursor:auto;
+    }
+}

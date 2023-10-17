@@ -1,35 +1,11 @@
 [
   {
-    "name": "0",
+    "name": "Test",
     "guestCount": 1,
     "menus": {
       "guest1": [
         "salad",
         "fish"
-      ]
-    }
-  },
-  {
-    "name": "0",
-    "guestCount": 1,
-    "menus": {
-      "guest1": [
-        "salad",
-        "steak"
-      ]
-    }
-  },
-  {
-    "name": "0",
-    "guestCount": 2,
-    "menus": {
-      "guest1": [
-        "salad",
-        "fish"
-      ],
-      "guest2": [
-        "salad",
-        "steak"
       ]
     }
   }

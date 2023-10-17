@@ -48,7 +48,7 @@ const RSVP = () => {
       }
 
       alert("Thank you for RSVPing. Hope to see you soon.");
-      // window.location.reload();
+      window.location.reload();
   };
 
 
@@ -100,15 +100,15 @@ const RSVP = () => {
 
           {menus.map((menu, index) => (
             <div key={index} className="rsvp-form__menu">
-              <label className="rsvp-form__label">Menu for Guest {index + 1}:</label>
+              <label className="rsvp-form__label">Meal choice for Guest {index + 1}:</label>
               <div className="rsvp-form__dropdown">
                   <select required value={menu.starter} onChange={e => handleMenuChange(index, 'starter', e.target.value)} className="rsvp-form__select">
-                  <option hidden>STARTER</option>
+                  <option value="" disabled selected>STARTER</option>
                   <option value="salad">Composed Salad</option>
                   <option value="soup">Soup</option>
                 </select>
                 <select required value={menu.main} onChange={e => handleMenuChange(index, 'main', e.target.value)} className="rsvp-form__select">
-                  <option hidden>MAIN</option>
+                  <option value="" disabled selected>MAIN</option>
                   <option value="steak">Steak Frites</option>
                   <option value="fish">Fish</option>
                 </select>

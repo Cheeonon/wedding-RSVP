@@ -3,7 +3,7 @@ import cover from "../assets/img/cover.png";
 import divider from "../assets/img/divider.png";
 import Carousel from '../components/Carousel';
 import RSVP from '../components/RSVP';
-// import GuestList from '../components/GuestList';
+import { Link } from 'react-router-dom';
 
 const Web = () => {
     return (
@@ -32,7 +32,7 @@ const MainText = () => (
 
         <div className="web__main-p">
             <p className="web__main-line">한성희 · 정미옥의 장남 <b className="web__main-highlighted">한규희</b></p> 
-            <p className="web__main-line">박성우 · 김성희의 장녀 <b className="web__main-highlighted">박채린</b></p>
+            <p className="web__main-line">박성우 · 김성희의 장녀 <b className="web__main-highlighted"><Link to="/login" className="linkFont">박</Link>채린</b></p>
         </div>
 
         <div className="web__main-p">

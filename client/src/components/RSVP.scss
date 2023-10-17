@@ -93,7 +93,7 @@
 .menu{
 
     &-p{
-        margin: 1rem 0.7rem 1.4rem 0.7rem;
+        margin: 1rem 1rem 1.4rem 1rem;
     }
 
     &__title{
@@ -119,6 +119,7 @@
         text-transform: uppercase;
         margin-top: .6rem;
         letter-spacing: .002rem;
+        text-decoration: underline;
     }
 
     &__desc{
