@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import "./RSVP.scss"
 import { submit } from '../utils/axios';
 
@@ -6,7 +6,7 @@ const RSVP = () => {
   const [name, setName] = useState('');
   const [guestCount, setGuestCount] = useState(1);
   const [menus, setMenus] = useState([{ starter: '', main: '' }]);
-  const formRef = React.useRef(null);
+  const formRef = useRef(null);
 
   const handleGuestCountChange = (count) => {
     setGuestCount(count);
@@ -43,9 +43,9 @@ const RSVP = () => {
       try {
         const response = await submit(submissionData);
         console.log(response.data);  
-    } catch (error) {
-        console.error('Error submitting form:', error);
-    }
+      } catch (error) {
+          console.error('Error submitting form:', error);
+      }
 
       alert("Thank you for RSVPing. Hope to see you soon.");
       // window.location.reload();
