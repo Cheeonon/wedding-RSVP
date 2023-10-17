@@ -1,0 +1,32 @@
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+ 
+  .carousel-image {
+    max-width: 95%;
+    max-height: 400px; /* Adjust the height as needed */
+    margin: 10px 0;
+  }
+
+  .thumbnail-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+  }
+  
+  .thumbnail {
+    width: 13%; /* Adjust the width of each thumbnail as needed */
+    margin: 0 13px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .thumbnail.active {
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }

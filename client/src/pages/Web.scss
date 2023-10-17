@@ -1,0 +1,124 @@
+@use "../assets/styles/partials/fonts" as *;
+
+.web{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fdecec;
+    color: #886c35;
+
+    @media screen and (min-width: 320px) {
+        overflow: hidden;
+        width: 100vw;
+    }
+
+    &__block{
+        margin: 1rem;
+        width: 320px;
+
+        @media screen and (min-width: 320px) {
+            width: 100vw;
+        }
+        
+        @media screen and (min-width: 500px) {
+            width: 500px;
+        }
+
+    }
+
+    &__divider{
+        width: 6rem;
+        background-image: url("../assets/img/divider.png") no-repeat;
+        background: center fixed;
+    }
+
+    &__cover{
+        &-img{
+            display: block;
+            width: 100%;
+        }
+    }
+
+    &__main{
+        &-p{
+            margin: 1.5rem;
+        }
+
+        &-line{
+            font-family: DXB;
+            font-size: .8rem;
+        }
+
+        &-quote{
+            font-family: DX;
+            font-size: .75rem;
+            margin: 3rem 2rem 2rem;
+        }
+
+        &-ref{
+            font-size: .6rem;
+        }
+
+        &-highlighted{
+            font-family:'Malgun Gothic';
+            font-size: .8rem;
+        }
+    }
+
+    &__event{
+        &-p{
+            margin: 1.5rem;
+        }
+
+        &-line{
+            font-family: Montserrat;
+            font-size: .8rem;
+            margin: 0.4rem;
+        }
+
+        &-link{
+            background-color: #886c35;
+            border-radius: 3px;
+            color: #fdecec;
+            font-size: .7rem;
+            list-style: none;
+            padding: 0.2rem 0.9rem;
+            text-decoration: none;
+            font-family: Montserrat;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        &--date{
+            font-family: Montserrat;
+            font-size: .85rem;
+            font-weight: 600;
+        }
+
+        &--title{
+            margin-bottom: 1rem;
+            margin-top: 2.5rem;
+            font-weight: 700;
+        }
+
+        &--location{
+            font-size: .7rem;
+            margin-bottom: 0.7rem;
+            font-weight: 500;
+        }
+
+        &--parking{
+            margin-top: 2rem;
+            font-family: DXB;
+            font-size: .8rem;
+        }
+
+        &--parking-instruction{
+            font-size: .65rem;
+            margin-top: 0.15rem;
+            font-family: Lateef;
+        }
+    }
+}
