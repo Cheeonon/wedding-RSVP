@@ -3,7 +3,7 @@ import cover from "../assets/img/cover.png";
 import divider from "../assets/img/divider.png";
 import Carousel from '../components/Carousel';
 import RSVP from '../components/RSVP';
-import GuestList from '../components/GuestList';
+// import GuestList from '../components/GuestList';
 
 const Web = () => {
     return (
