@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = `wedding-rsvp-production-fcff.up.railway.app`;
+const baseURL = `https://wedding-rsvp-production-fcff.up.railway.app`;
 // const baseURL = `http://localhost:5000`;
 
 
