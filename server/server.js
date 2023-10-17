@@ -4,12 +4,13 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs');
-const PORT = process.env.PORT || 5000;;
+const PORT = process.env.PORT || 5000;
 
 const DATA_PATH = path.join(__dirname, './data/guests.json');
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/', (req, res) => {
     res.send('Hello, World!');
