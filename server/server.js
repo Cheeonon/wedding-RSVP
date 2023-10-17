@@ -35,6 +35,16 @@ const writeData = (data) => {
     }
 };
 
+app.get('/api/get-data', (req, res) => {
+    try {
+        const dataFile = readData();
+        res.json(dataFile);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
 app.post('/api/submit', (req, res) => {
     const newData = req.body;
     
