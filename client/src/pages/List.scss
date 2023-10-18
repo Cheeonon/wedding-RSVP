@@ -1,3 +1,130 @@
-.list{
-    margin: 2rem;
-}
+.list-container {
+    padding: 40px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f9fc;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .list-title,
+  .summary-title,
+  .raw-data-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  .add-button,
+  .edit-button,
+  .remove-button,
+  .update-button,
+  .add-guest-button,
+  .cancel-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin: 5px 0;
+  
+    &.add-button,
+    &.add-guest-button {
+      background-color: #4caf50;
+      color: #fff;
+      &:hover {
+        background-color: #45a049;
+      }
+    }
+  
+    &.edit-button,
+    &.update-button {
+      background-color: #ff9800;
+      color: #fff;
+      &:hover {
+        background-color: #e68a00;
+      }
+    }
+  
+    &.remove-button {
+      background-color: #f44336;
+      color: #fff;
+      &:hover {
+        background-color: #d32f2f;
+      }
+    }
+  
+    &.cancel-button {
+      background-color: #9e9e9e;
+      color: #fff;
+      &:hover {
+        background-color: #8d8d8d;
+      }
+    }
+  }
+  
+  .list-section,
+  .edit-section,
+  .summary-section,
+  .raw-data-section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .guest-list {
+    list-style-type: none;
+    padding-left: 0;
+  
+    .guest-item {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      background-color: #f5f5f5;
+      transition: background-color 0.2s;
+  
+      &:hover {
+        background-color: #e9ecef;
+      }
+  
+      .edit-button,
+      .remove-button {
+        margin-left: 10px;
+      }
+    }
+  }
+  
+  .edit-section {
+    display: flex;
+    align-items: center;
+  
+    .edit-input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+  }
+  
+  .total-guests,
+  .menu-count {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .raw-data-content {
+    overflow-x: scroll;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  

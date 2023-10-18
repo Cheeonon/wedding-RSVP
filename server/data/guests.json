@@ -1,12 +1,1 @@
-[
-  {
-    "name": "Test",
-    "guestCount": 1,
-    "menus": {
-      "guest1": [
-        "salad",
-        "fish"
-      ]
-    }
-  }
-]
+[]

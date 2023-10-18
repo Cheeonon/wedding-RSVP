@@ -1,17 +1,21 @@
 import React, { useState, useRef } from 'react';
 import "./RSVP.scss"
 import { submit } from '../utils/axios';
+import { v4 as uuidv4 } from 'uuid';
 
 const RSVP = () => {
   const [name, setName] = useState('');
   const [guestCount, setGuestCount] = useState(1);
   const [menus, setMenus] = useState([{ starter: '', main: '' }]);
   const formRef = useRef(null);
+  const [allergies, setAllergies] = useState([]);
 
   const handleGuestCountChange = (count) => {
     setGuestCount(count);
     const newMenus = Array.from({ length: count }, () => ({ starter: '', main: '' }));
+    const newAllergies = Array.from({ length: count }, () => '');
     setMenus(newMenus);
+    setAllergies(newAllergies);
   }
 
   const handleMenuChange = (index, course, value) => {
@@ -20,25 +24,34 @@ const RSVP = () => {
     setMenus(newMenus);
   }
 
+  const handleAllergyChange = (index, value) => {
+    const newAllergies = [...allergies];
+    newAllergies[index] = value;
+    setAllergies(newAllergies);
+}
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formRef.current.checkValidity()) {
-      formRef.current.reportValidity();
-      return;
-  }
+        formRef.current.reportValidity();
+        return;
+    }
 
+      const guestID = uuidv4();
 
-    const formattedMenus = {};
-    menus.forEach((menu, index) => {
-        formattedMenus[`guest${index + 1}`] = [menu.starter, menu.main];
-    });
+      const formattedMenus = {};
+      menus.forEach((menu, index) => {
+          formattedMenus[`guest${index + 1}`] = [menu.starter, menu.main];
+      });
 
-    const submissionData = {
-        name,
-        guestCount,
-        menus: formattedMenus
-    };
+      const submissionData = {
+          guestID,
+          name,
+          guestCount,
+          menus: formattedMenus,
+          allergies
+      };
 
       try {
         const response = await submit(submissionData);
@@ -113,6 +126,8 @@ const RSVP = () => {
                   <option value="fish">Fish</option>
                 </select>
               </div>
+              <label className="rsvp-form__label rsvp-form__allergies">Allergies & Dietary Restrictions: </label>
+              <input required type="text" onChange={e => handleAllergyChange(index, e.target.value)} className='rsvp-form__input rsvp-form__allergies'/>
             </div>
           ))}
         </div>

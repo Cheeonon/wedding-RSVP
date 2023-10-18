@@ -61,6 +61,29 @@ app.post('/api/submit', (req, res) => {
     }
 });
 
+// Remove a guest by UUID
+app.delete('/api/remove/:id', (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const dataFile = readData();
+        const initialLength = dataFile.length;
+
+        const updatedData = dataFile.filter(guest => guest.guestID !== id);
+
+        if (initialLength === updatedData.length) {
+            return res.status(404).json({ message: 'Guest not found.' });
+        }
+
+        writeData(updatedData);
+
+        res.json({ message: 'Guest removed successfully.' });
+    } catch (err) {
+        console.error('Error removing guest:', err);
+        res.status(500).json({ message: 'Server error.' });
+    }
+});
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

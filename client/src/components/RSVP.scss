@@ -63,12 +63,18 @@
     }
 
     &__menu{
-
+        margin-bottom: 1rem;
     }
 
     &__dropdown{
         display: flex;
-        margin: .5rem 0 .7rem 0;
+        margin-top: .5rem;
+        margin-left: 1rem;
+    }
+
+    &__allergies{
+        margin-left: 1rem;
+        font-weight: 600;
     }
 
     &__select{
