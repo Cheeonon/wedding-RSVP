@@ -5,8 +5,8 @@ import axios from "axios";
 
 const List = () => {
   const [guests, setGuests] = useState([]);
-  const baseURL = `http://localhost:5000`;
-// const baseURL = `https://wedding-rsvp-production-fcff.up.railway.app`;
+//   const baseURL = `http://localhost:5000`;
+const baseURL = `https://wedding-rsvp-production-fcff.up.railway.app`;
 
   useEffect(() => {
     const fetchData = async () => {
