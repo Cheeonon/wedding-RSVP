@@ -53,13 +53,24 @@ const baseURL = `https://wedding-rsvp-production-fcff.up.railway.app`;
         <h2 className="list-title">List of Guests</h2>
 
         <ul className="guest-list">
-          {guests.map((guest, index) => (
-            <li className="guest-item" key={index}>
-              {index + 1} | 이름: {guest.name} | 동행자 수(본인포함): {guest.guestCount} |
-              메뉴: {guest.menus?.guest1?.join(", ") || ""} | 특이사항: {guest.allergies}
-              <button className="remove-button" onClick={() => removeGuest(guest.guestID)}>Remove</button>
-            </li>
-          ))}
+            {guests.map((guest, index) => (
+                <li className="guest-item" key={index}>
+                {index + 1} 
+                <div>* Name: {guest.name}</div> 
+                <div>* Guests(본인포함): {guest.guestCount}</div>
+                <div>
+                    * Menu: {Object.entries(guest.menus).map(([guestName, menuItems]) => (
+                        <div key={guestName}>
+                        {guestName}: {menuItems.join(", ")}
+                        </div>
+                    ))}
+                </div>
+                <div>
+                    * Allergies: {guest.allergies}
+                </div>
+                <button className="remove-button" onClick={() => removeGuest(guest.guestID)}>Remove</button>
+                </li>
+            ))}
         </ul>
       </div>
 

@@ -12,5 +12,19 @@
     "allergies": [
       "X"
     ]
+  },
+  {
+    "guestID": "9e0c7dc6-c648-4119-91e1-352ba545fa8d",
+    "name": "Test",
+    "guestCount": 1,
+    "menus": {
+      "guest1": [
+        "salad",
+        "steak"
+      ]
+    },
+    "allergies": [
+      "Test"
+    ]
   }
 ]
