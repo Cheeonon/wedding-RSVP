@@ -101,7 +101,7 @@ const RSVP = () => {
 
       <form ref={formRef} className="rsvp-form__form">
         <div className="rsvp-form__field">
-          <label className="rsvp-form__label">Number of Guests: <span className="rsvp-form__label-small"><br></br>(including yourself)</span></label>
+          <label className="rsvp-form__label">Number of Guests <span className="rsvp-form__label-small"><br></br>(including yourself)</span></label>
           <select value={guestCount} onChange={e => handleGuestCountChange(Number(e.target.value))} className="rsvp-form__select">
             {[...Array(12)].map((_, index) => (
               <option key={index} value={index + 1}>{index + 1}</option>
@@ -135,14 +135,14 @@ const RSVP = () => {
           </div>
           {menus.map((menu, index) => (
             <div key={index} className="rsvp-form__menu">
-              <label className="rsvp-form__label">Guest {index + 1}:</label>
+              <label className="rsvp-form__label">Guest {index + 1}</label>
               <div className="guest">
                 <div className="guest__field">
-                  <label className="guest__label">Name:</label>
+                  <label className="guest__label">Name</label>
                   <input required type="text"  value={names[index]} onChange={e => handleNameChange(index, e.target.value)} className='rsvp-form__input'/>
                 </div>
                 <div className="guest__field">
-                  <label className="guest__label">Meal Choice:</label>
+                  <label className="guest__label">Meal Choice</label>
                   <div className="rsvp-form__dropdown">
                       <select required value={menu.starter} onChange={e => handleMenuChange(index, 'starter', e.target.value)} className="rsvp-form__select">
                       <option value="" disabled selected>STARTER</option>
@@ -157,7 +157,7 @@ const RSVP = () => {
                   </div>
                 </div>
                 <div className="guest__field">
-                  <label className="guest__label">Allergies & Dietary Restrictions: </label>
+                  <label className="guest__label">Allergies & Dietary Restrictions </label>
                   <input required type="text" onChange={e => handleAllergyChange(index, e.target.value)} className='rsvp-form__input'/>
                 </div>
               </div>
