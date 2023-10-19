@@ -42,7 +42,7 @@ app.get('/api/get-data', (req, res) => {
         res.json(dataFile);
     } catch (err) {
         console.error(err.message);
-        res.status(500).json({ message: 'Internal Server Error' });
+        res.status(500).json({ message: 'Internal Server Error', data: dataFile });
     }
 });
 
@@ -57,7 +57,7 @@ app.post('/api/submit', (req, res) => {
         res.json({ message: 'RSVP submitted successfully.', data: dataFile });
     } catch (err) {
         console.error('Error processing RSVP:', err);
-        res.status(500).json({ message: 'Server error.' });
+        res.status(500).json({ message: 'Server error.', data: dataFile });
     }
 });
 
@@ -72,7 +72,7 @@ app.delete('/api/remove/:id', (req, res) => {
         const updatedData = dataFile.filter(guest => guest.guestID !== id);
 
         if (initialLength === updatedData.length) {
-            return res.status(404).json({ message: 'Guest not found.' });
+            return res.status(404).json({ message: 'Guest not found.', data: dataFile });
         }
 
         writeData(updatedData);
@@ -80,7 +80,7 @@ app.delete('/api/remove/:id', (req, res) => {
         res.json({ message: 'Guest removed successfully.' });
     } catch (err) {
         console.error('Error removing guest:', err);
-        res.status(500).json({ message: 'Server error.' });
+        res.status(500).json({ message: 'Server error.', data: dataFile });
     }
 });
 

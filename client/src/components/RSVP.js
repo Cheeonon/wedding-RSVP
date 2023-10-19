@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import "./RSVP.scss"
-import { submit } from '../utils/axios';
+import { getData, submit } from '../utils/axios';
 import { v4 as uuidv4 } from 'uuid';
 
 const RSVP = () => {
@@ -9,6 +9,19 @@ const RSVP = () => {
   const [menus, setMenus] = useState([{ starter: '', main: '' }]);
   const formRef = useRef(null);
   const [allergies, setAllergies] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getData();
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching guests:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleGuestCountChange = (count) => {
     setGuestCount(count);

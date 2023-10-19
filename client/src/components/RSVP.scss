@@ -105,7 +105,8 @@
 }
 
 .menu{
-    text-align: right;
+    text-align: center;
+
     &-p{
         margin: 1rem 1rem 1.4rem 1.5rem;
     }
@@ -148,8 +149,7 @@
 
 .guest{
     margin: 0rem 1.5rem;
-    text-align: right;
-
+    text-align: center;
     &__label{
         font-family: Montserrat;
         font-size: .6rem;
