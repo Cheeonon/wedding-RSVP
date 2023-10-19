@@ -55,23 +55,29 @@ const baseURL = `https://wedding-rsvp-production-fcff.up.railway.app`;
         <ul className="guest-list">
             {guests.map((guest, index) => (
                 <li className="guest-item" key={index}>
-                {index + 1} 
-                <div>* Name: {guest.name}</div> 
-                <div>* Guests(본인포함): {guest.guestCount}</div>
                 <div>
-                    * Menu: {Object.entries(guest.menus).map(([guestName, menuItems]) => (
-                        <div key={guestName}>
-                        {guestName}: {menuItems.join(", ")}
+                    <strong>Guests(본인포함):</strong> {guest.guestCount}
+                </div>
+                {Object.entries(guest.menus).map(([guestKey, menuItems], innerIndex) => (
+                    <div key={guestKey}>
+                    {innerIndex > 0 && <hr />} {/* This adds a horizontal line between guests if more than one */}
+                    <div>
+                        <strong>Name:</strong> {guest.names[guestKey]} {/* Fetch the actual name using guestKey */}
+                    </div>
+                    <div>
+                        <strong>Menu:</strong> {menuItems.join(", ")}
+                    </div>
+                    {guest.allergies && guest.allergies[innerIndex] && (
+                        <div>
+                        <strong>Allergies:</strong> {guest.allergies[innerIndex]}
                         </div>
-                    ))}
-                </div>
-                <div>
-                    * Allergies: {guest.allergies}
-                </div>
+                    )}
+                    </div>
+                ))}
                 <button className="remove-button" onClick={() => removeGuest(guest.guestID)}>Remove</button>
                 </li>
             ))}
-        </ul>
+            </ul>
       </div>
 
       <div className="summary-section">

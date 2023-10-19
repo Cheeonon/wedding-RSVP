@@ -4,7 +4,7 @@ import { submit } from '../utils/axios';
 import { v4 as uuidv4 } from 'uuid';
 
 const RSVP = () => {
-  const [name, setName] = useState('');
+  const [names, setNames] = useState(['']);
   const [guestCount, setGuestCount] = useState(1);
   const [menus, setMenus] = useState([{ starter: '', main: '' }]);
   const formRef = useRef(null);
@@ -12,11 +12,20 @@ const RSVP = () => {
 
   const handleGuestCountChange = (count) => {
     setGuestCount(count);
+    const newNames = Array.from({ length: count }, () => ''); 
     const newMenus = Array.from({ length: count }, () => ({ starter: '', main: '' }));
     const newAllergies = Array.from({ length: count }, () => '');
+    setNames(newNames); 
     setMenus(newMenus);
     setAllergies(newAllergies);
   }
+
+  const handleNameChange = (index, value) => { 
+    const newNames = [...names];
+    newNames[index] = value;
+    setNames(newNames);
+  }
+
 
   const handleMenuChange = (index, course, value) => {
     const newMenus = [...menus];
@@ -40,6 +49,11 @@ const RSVP = () => {
 
       const guestID = uuidv4();
 
+      const formattedNames = {};
+      names.forEach((name, index) => {
+          formattedNames[`guest${index + 1}`] = name;
+      });
+      
       const formattedMenus = {};
       menus.forEach((menu, index) => {
           formattedMenus[`guest${index + 1}`] = [menu.starter, menu.main];
@@ -47,7 +61,7 @@ const RSVP = () => {
 
       const submissionData = {
           guestID,
-          name,
+          names: formattedNames, 
           guestCount,
           menus: formattedMenus,
           allergies
@@ -74,10 +88,6 @@ const RSVP = () => {
 
       <form ref={formRef} className="rsvp-form__form">
         <div className="rsvp-form__field">
-          <label className="rsvp-form__label">Name:</label>
-          <input required type="text" value={name} onChange={e => setName(e.target.value)} className='rsvp-form__input'/>
-        </div>
-        <div className="rsvp-form__field">
           <label className="rsvp-form__label">Number of Guests: <span className="rsvp-form__label-small"><br></br>(including yourself)</span></label>
           <select value={guestCount} onChange={e => handleGuestCountChange(Number(e.target.value))} className="rsvp-form__select">
             {[...Array(12)].map((_, index) => (
@@ -87,7 +97,7 @@ const RSVP = () => {
         </div>
         <div>
           <div className="menu">
-            <h1 className="menu__title">Meal Choice:</h1>
+            <h1 className="menu__title">Menu:</h1>
 
             <div className="menu-p">
               <h2 className="menu__subtitle">Starter</h2>
@@ -110,24 +120,34 @@ const RSVP = () => {
 
             </div>
           </div>
-
           {menus.map((menu, index) => (
             <div key={index} className="rsvp-form__menu">
-              <label className="rsvp-form__label">Meal choice for Guest {index + 1}:</label>
-              <div className="rsvp-form__dropdown">
-                  <select required value={menu.starter} onChange={e => handleMenuChange(index, 'starter', e.target.value)} className="rsvp-form__select">
-                  <option value="" disabled selected>STARTER</option>
-                  <option value="salad">Composed Salad</option>
-                  <option value="soup">Soup</option>
-                </select>
-                <select required value={menu.main} onChange={e => handleMenuChange(index, 'main', e.target.value)} className="rsvp-form__select">
-                  <option value="" disabled selected>MAIN</option>
-                  <option value="steak">Steak Frites</option>
-                  <option value="fish">Fish</option>
-                </select>
+              <label className="rsvp-form__label">Guest {index + 1}:</label>
+              <div className="guest">
+                <div className="guest__field">
+                  <label className="guest__label">Name:</label>
+                  <input required type="text"  value={names[index]} onChange={e => handleNameChange(index, e.target.value)} className='rsvp-form__input'/>
+                </div>
+                <div className="guest__field">
+                  <label className="guest__label">Meal Choice:</label>
+                  <div className="rsvp-form__dropdown">
+                      <select required value={menu.starter} onChange={e => handleMenuChange(index, 'starter', e.target.value)} className="rsvp-form__select">
+                      <option value="" disabled selected>STARTER</option>
+                      <option value="salad">Composed Salad</option>
+                      <option value="soup">Soup</option>
+                    </select>
+                    <select required value={menu.main} onChange={e => handleMenuChange(index, 'main', e.target.value)} className="rsvp-form__select">
+                      <option value="" disabled selected>MAIN</option>
+                      <option value="steak">Steak Frites</option>
+                      <option value="fish">Fish</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="guest__field">
+                  <label className="guest__label">Allergies & Dietary Restrictions: </label>
+                  <input required type="text" onChange={e => handleAllergyChange(index, e.target.value)} className='rsvp-form__input'/>
+                </div>
               </div>
-              <label className="rsvp-form__label rsvp-form__allergies">Allergies & Dietary Restrictions: </label>
-              <input required type="text" onChange={e => handleAllergyChange(index, e.target.value)} className='rsvp-form__input rsvp-form__allergies'/>
             </div>
           ))}
         </div>

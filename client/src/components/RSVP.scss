@@ -37,6 +37,10 @@
         margin-top: 1.5rem;
     }
 
+    &__name{
+        margin-left: 1rem;
+    }
+
     &__label{
         font-family: Montserrat;
         font-size: .7rem;
@@ -58,8 +62,9 @@
         border-radius: 3px;
         color: #3d3d3d;
         font-family: Montserrat;
-        font-size: .9rem;
         text-align: center;
+        width: 100%;
+        font-size: .9rem;
     }
 
     &__menu{
@@ -100,7 +105,7 @@
 .menu{
 
     &-p{
-        margin: 1rem 1rem 1.4rem 1rem;
+        margin: 1rem 1rem 1.4rem 1.5rem;
     }
 
     &__title{
@@ -134,5 +139,22 @@
         font-size: 0.55rem;
         font-weight: 600;
         text-transform: lowercase;
+    }
+}
+
+.guest{
+    margin: 0rem 1.5rem;
+
+    &__label{
+        font-family: Montserrat;
+        font-size: .7rem;
+        font-weight: 600;
+        text-decoration: underline;
+        text-transform: uppercase;
+        width: 100%;
+    }
+
+    &__field{
+        margin-bottom: .3rem;
     }
 }
