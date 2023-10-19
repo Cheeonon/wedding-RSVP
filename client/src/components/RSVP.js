@@ -97,7 +97,7 @@ const RSVP = () => {
         </div>
         <div>
           <div className="menu">
-            <h1 className="menu__title">Menu:</h1>
+            <h1 className="menu__title">Menu</h1>
 
             <div className="menu-p">
               <h2 className="menu__subtitle">Starter</h2>
